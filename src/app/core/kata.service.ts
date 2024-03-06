@@ -13,4 +13,5 @@ export class KataService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.api}/products`)
   }
+
 }

@@ -1,13 +1,13 @@
-<!-- <div class="container">
+<div class="container">
     <div class="row" *ngIf="product">
         <div class="col-6">
-            <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="w-100">
+            <img src="{{product.image}}" alt="{{product.title}}" class="w-100">
         </div>
         <div class="col-6 mt-5">
-            <h2>{{product.name}}</h2>
+            <h2>{{product.title}}</h2>
             <p style="font-size: 2em;">{{product.price | currency}}</p>
-            <h5 class="text-primary mb-3" *ngIf="quantityInBasket > 0">
-                You have {{quantityInBasket}} of this item in your basket
+            <h5 class="text-primary mb-3" *ngIf="quantityInCart > 0">
+                You have {{quantityInCart}} of this item in your cart
             </h5>
             <div class="d-flex justify-content-start align-items-center">
                 <i (click)="decrementQuantity()" class="fa fa-minus-circle text-primary me-2"
@@ -17,9 +17,14 @@
                 </span>
                 <i (click)="incrementQuantity()" class="fa fa-plus-circle text-primary ms-2"
                     style="cursor: pointer; font-size: 2em;"></i>
-                <button class="btn btn-outline-primary ms-4" (click)="updateBasket()"
-                    [disabled]="quantity === quantityInBasket">{{buttonText}}</button>
+                <button class="btn btn-outline-primary ms-4" (click)="updateCart()"
+                    [disabled]="quantity === quantityInCart">{{buttonText}}</button>
             </div>
         </div>
     </div>
-</div> -->
+    <div class="row"  *ngIf="!product" >
+        <div class="col-12">
+            Product not found!
+        </div>
+    </div>
+</div>

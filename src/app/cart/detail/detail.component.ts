@@ -1,0 +1,25 @@
+import { Component } from '@angular/core';
+import { CartService } from '../cart.service';
+import { CartItem } from '../../models/cart';
+
+@Component({
+  selector: 'app-detail',
+  templateUrl: './detail.component.html',
+  styleUrls: ['./detail.component.scss']
+})
+export class DetailComponent {
+
+  constructor(public cartService: CartService) {
+    
+  }
+
+
+  incrementQuantity(item: CartItem) {
+    this.cartService.addItemToCart(item);
+  }
+
+  removeItem(id: number, quantity: number) {
+    this.cartService.removeItemFromCart(id, quantity);
+  }
+
+}

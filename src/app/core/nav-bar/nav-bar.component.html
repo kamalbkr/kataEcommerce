@@ -8,11 +8,11 @@
         <a class="p-2" routerLink="/test-error" routerLinkActive="active">Errors</a>
     </nav>
     <div class="d-flex align-items-center">
-        <a routerLink="/basket" class="position-relative">
+        <a [routerLink]="['/cart']" class="position-relative">
             <i class="fa fa-shopping-basket fa-2x me-5 text-dark"></i>
-            <!-- <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
-                {{getCount(basket.items)}}
-            </div> -->
+            <div *ngIf="(cartService.cartSource$ | async) as cart" class="cart-no">
+                {{getCount(cart.items)}}
+            </div>
         </a>
         <a routerLink="/account/login" class="btn btn-outline-secondary me-2">Login</a>
         <a routerLink="/account/register" class="btn btn-outline-secondary me-3">Sign up</a>
@@ -28,8 +28,8 @@
                 </a>
                 <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
                     <li class="py-1">
-                        <a routerLink="/basket" class="dropdown-item">
-                            <i class="fa fa-shopping-basket me-3"></i> View basket
+                        <a routerLink="/cart" class="dropdown-item">
+                            <i class="fa fa-shopping-basket me-3"></i> View cart
                         </a>
                     </li>
                     <li class="py-1">

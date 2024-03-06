@@ -9,6 +9,7 @@ import { NavBarComponent } from './core/nav-bar/nav-bar.component';
 import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
 import { ProductItemComponent } from './shop/product-item/product-item.component';
 import { ShopModule } from './shop/shop.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,13 @@ import { ShopModule } from './shop/shop.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AppRoutingModule,
+    AppRoutingModule, 
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
     RouterLinkActive,
-    ShopModule
+    ShopModule,
+    CartModule
 
   ],
   providers: [],
