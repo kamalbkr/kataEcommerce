@@ -6,8 +6,6 @@ import { RouterLinkActive, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './core/nav-bar/nav-bar.component';
-import { ProductDetailComponent } from './shop/product-detail/product-detail.component';
-import { ProductItemComponent } from './shop/product-item/product-item.component';
 import { ShopModule } from './shop/shop.module';
 import { CartModule } from './cart/cart.module';
 
@@ -19,13 +17,14 @@ import { CartModule } from './cart/cart.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
     RouterLinkActive,
     ShopModule,
-    CartModule
+    CartModule,
+
 
   ],
   providers: [],

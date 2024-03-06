@@ -3,79 +3,22 @@
         <section class="col-12">
 
 
-            <div class="row row-cols-3 g-3 mb-4">
+            <div class="row row-cols-3 g-3 mb-4" *ngIf="paginationTable">
                 <!-- loop each product -->
-                <div class="col" *ngFor="let product of products | slice: (paginationTable.page-1) * paginationTable.pageSize : paginationTable.page * paginationTable.pageSize">
+                <!-- {{(products | slice: (paginationTable.page-1) * paginationTable.pageSize : paginationTable.page *
+                paginationTable.pageSize) | json }} -->
+                <div class="col" *ngFor="let product of products ">
                     <app-product-item [product]="product"></app-product-item>
                 </div>
             </div>
 
             <div class="d-flex justify-content-center" *ngIf="totalCount > 0">
-               
-                <!-- <app-pagination [count]="products.length"  [data]="paginationTable"></app-pagination> -->
 
 
-                <div class="has-text-centered d-flex justify-content-center mt-4 paginator"  >
-                    <!-- <ngb-pagination [collectionSize]="products.length" [(page)]="paginationTable.page" [pageSize]="paginationTable.pageSize" [ellipses]="true"
-                        [maxSize]="4" [rotate]="true" (pageChange)="refreshbookings()">
-                    </ngb-pagination> -->
-                    <ng-template ngbPaginationPrevious>
-                        <span> 
-                            <
-                        </span>
-                    </ng-template>
-                    <ng-template ngbPaginationNext>
-                        <span>
-                            >
-                        </span> 
-                    </ng-template>
-                </div>
 
-               
 
             </div>
 
         </section>
     </div>
 </div>
-
-
-
-<!-- <div class="has-text-centered d-flex justify-content-center mt-4 paginator" *ngIf="data">
-    <ngb-pagination [collectionSize]="count" [(page)]="data.page" [pageSize]="data.pageSize" [ellipses]="true"
-        [maxSize]="4" [rotate]="true" (pageChange)="refreshbookings()">
-    </ngb-pagination>
-    <ng-template ngbPaginationPrevious>
-        <span> 
-            <img src="../../../../assets/icons/prev.svg" alt="">
-        </span>
-    </ng-template>
-    <ng-template ngbPaginationNext>
-        <span>
-            <img src="../../../../assets/icons/next.svg" alt="">
-        </span> 
-    </ng-template>
-</div> -->
-
-
-<!-- export class PaginationComponent implements OnInit, OnChanges {
-    @Input() data: any
-    @Input() count: any
-    public dataObj: any;
-    constructor() { }
-    ngOnChanges(changes: SimpleChanges): void {
-      this.dataObj = this.data
-    }
-  
-    ngOnInit(): void {
-    }
-    
-      // paginator
-      refreshbookings() {
-         
-        if (this.data.list) this.data.data = of(this.data.list
-          .map((container: any, i: number) => ({ idb: i + 1, ...container }))
-          .slice((this.data.page - 1) * this.data.pageSize, (this.data.page - 1) * this.data.pageSize + this.data.pageSize));
-      }
-    
-  } -->

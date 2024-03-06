@@ -12,11 +12,11 @@ import { Pagination } from '../models/pagination.model';
 })
 export class ShopComponent implements OnInit, OnDestroy {
   products: Product[] = []
-  pageSize:number = 10 
-  page:number = 1
-  totalCount:number = 0
+  pageSize: number = 10
+  page: number = 1
+  totalCount: number = 0
   public paginationTable!: Pagination<Product>;
-  constructor(private kataService: KataService, private kataDataservice:KataDataService) { }
+  constructor(private kataService: KataService, private kataDataservice: KataDataService) { }
 
 
   $destroy = new Subject<void>()
@@ -27,7 +27,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.$destroy.next()
     this.$destroy.complete()
   }
-  
+
   productsList() {
     this.kataService.getProducts().pipe(
       takeUntil(this.$destroy),
@@ -35,21 +35,23 @@ export class ShopComponent implements OnInit, OnDestroy {
 
         this.products = m
         this.totalCount = this.products.length
-        this.kataDataservice.setProduct(this.products)
+        // this.kataDataservice.setProduct(this.products)
         const dataObj = {
           page: 0,
           pageSize: 10,
           collectionSize: this.products.length,
           data: of(this.products.slice(0, 4)),
           list: this.products
-        } 
+        }
         this.paginationTable = dataObj
+        console.log(this.paginationTable);
+
       })
     ).subscribe()
   }
 
   refreshbookings() {
-         
+
     if (this.paginationTable.list) this.paginationTable.data = of(this.paginationTable.list
       .map((container: any, i: number) => ({ idb: i + 1, ...container }))
       .slice((this.paginationTable.page - 1) * this.paginationTable.pageSize, (this.paginationTable.page - 1) * this.paginationTable.pageSize + this.paginationTable.pageSize));

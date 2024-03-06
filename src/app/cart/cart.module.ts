@@ -4,11 +4,11 @@ import { DetailComponent } from './detail/detail.component';
 
 
 import { HttpClientModule } from '@angular/common/http';
- import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterLinkActive, RouterModule } from '@angular/router'; 
+import { RouterLinkActive, RouterModule } from '@angular/router';
 import { CartRoutingModule } from './cart-routing.module';
- 
+
 
 
 @NgModule({
@@ -17,11 +17,11 @@ import { CartRoutingModule } from './cart-routing.module';
   ],
   imports: [
     BrowserModule,
-    CartRoutingModule, 
+    CartRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-    RouterLinkActive, 
+    RouterLinkActive,
   ]
 })
 export class CartModule { }

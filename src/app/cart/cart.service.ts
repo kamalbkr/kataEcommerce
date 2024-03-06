@@ -16,13 +16,12 @@ export class CartService {
 
   setCart(cart: Cart) {
     this.cartSource.next(cart);
-        this.calculateTotals();
+    this.calculateTotals();
   }
   getCurrentCartValue() {
     return this.cartSource.value;
   }
-  // Product | CartItem
-  addItemToCart(item:any, quantity = 1) {
+  addItemToCart(item: any, quantity = 1) {
     if (this.isProduct(item)) item = this.mapProductItemToCartItem(item);
     const cart = this.getCurrentCartValue() ?? this.createCart();
     cart.items = this.addOrUpdateItem(cart.items, item, quantity);
@@ -44,11 +43,11 @@ export class CartService {
   }
 
   deleteCart(cart: Cart) {
-  
-        this.cartSource.next(null);
-        this.cartTotalSource.next(null);
-        // localStorage.removeItem('cart_id');
-    
+
+    this.cartSource.next(null);
+    this.cartTotalSource.next(null);
+    // localStorage.removeItem('cart_id');
+
   }
 
   private addOrUpdateItem(items: CartItem[], itemToAdd: CartItem, quantity: number): CartItem[] {
@@ -68,7 +67,7 @@ export class CartService {
   }
   private mapProductItemToCartItem(item: Product): CartItem {
     return {
-      ...item, quantity:0 
+      ...item, quantity: 0
     }
   }
 
@@ -78,7 +77,7 @@ export class CartService {
     const shipping = 0;
     const subtotal = cart.items.reduce((a, b) => (b.price * b.quantity) + a, 0);
     const total = shipping + subtotal;
-    this.cartTotalSource.next({shipping, total, subtotal});
+    this.cartTotalSource.next({ shipping, total, subtotal });
   }
 
   private isProduct(item: Product | CartItem): item is Product {
